@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Court — a card battler</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="brand">EMBER COURT</div>
+    <div class="topstats">
+      <span id="roundLabel">Round 1</span>
+      <span id="scoreLabel">Score 0</span>
+      <span class="hint">Keys: 1–7 play card · Enter end turn · M start</span>
+    </div>
+  </header>
+
+  <section id="foeZone" class="zone">
+    <div class="fighter" id="foeFighter">
+      <div class="fighter-name">🔥 THE CINDER QUEEN</div>
+      <div class="lifebar"><div class="lifefill foe" id="foeLifeFill"></div><span class="lifetext" id="foeLifeText">30 / 30</span></div>
+      <div class="armorline">Armor <b id="foeArmor">0</b> · Deck <b id="foeDeckCount">25</b></div>
+      <div class="intent" id="foeIntent">The Queen is thinking…</div>
+    </div>
+    <div class="foehand" id="foeHand"></div>
+  </section>
+
+  <section id="tableMid">
+    <div class="pile" id="deckPile"><div class="pilecount" id="deckCount">25</div><div class="pilelabel">DRAW DECK</div></div>
+    <div id="logBox"><div class="logtitle">COURT LOG</div><ul id="logList"></ul></div>
+    <div class="pile" id="discardPile"><div class="pilecount" id="discardCount">0</div><div class="pilelabel">DISCARD</div></div>
+    <div id="chainBox"><div class="chaintitle">RESONANCE</div><div id="chainText">Play two cards of one element in a row: +2 power</div></div>
+  </section>
+
+  <section id="playerZone" class="zone player">
+    <div class="player-top">
+      <div class="fighter" id="playerFighter">
+        <div class="fighter-name">YOU — THE EMBER KNIGHT</div>
+        <div class="lifebar"><div class="lifefill you" id="playerLifeFill"></div><span class="lifetext" id="playerLifeText">30 / 30</span></div>
+        <div class="armorline">Armor <b id="playerArmor">0</b> · Mana <span id="manaGems"></span></div>
+      </div>
+      <button id="endTurnBtn" type="button">END TURN ⏎</button>
+    </div>
+    <div id="playerHand" class="hand"></div>
+  </section>
+
+  <div id="titleScreen" class="overlay">
+    <div class="panel">
+      <div class="game-title">EMBER COURT</div>
+      <div class="game-sub">A turn-based card battler of four elements</div>
+      <div class="elements-row">
+        <span class="elchip ember">▲ EMBER</span>
+        <span class="elchip frost">◆ FROST</span>
+        <span class="elchip leaf">● LEAF</span>
+        <span class="elchip storm">★ STORM</span>
+      </div>
+      <p class="rules">
+        You and the Cinder Queen start at 30 life. Each turn you gain mana and draw cards.
+        Play cards to strike, block, heal or draw. Play two cards of the <b>same element</b>
+        in a row to trigger <b>Resonance +2 power</b>. Watch the Queen's intent — block when
+        she plans a big hit. First to 0 life loses.
+      </p>
+      <button id="playBtn" type="button">▶ &nbsp;PLAY &nbsp;(M)</button>
+      <div class="foot">Original game · no network · keyboard 1–7, Enter, M</div>
+    </div>
+  </div>
+
+  <div id="endScreen" class="overlay hidden">
+    <div class="panel">
+      <div class="game-title" id="endTitle">VICTORY</div>
+      <div class="game-sub" id="endSub"></div>
+      <p class="rules" id="endStats"></p>
+      <button id="againBtn" type="button">↻ &nbsp;PLAY AGAIN &nbsp;(M)</button>
+    </div>
+  </div>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
